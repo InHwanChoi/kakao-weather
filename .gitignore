@@ -6,6 +6,7 @@ __pycache__/
 
 # Tokens (sensitive)
 kakao_tokens.json
+rain_alert_state.json
 
 # IDE
 .vscode/

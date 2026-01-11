@@ -2,6 +2,14 @@
 
 This file provides guidance to AI agents when working with code in this repository.
 
+## Session Start Instructions
+
+**CRITICAL**: All git operations, documentation writing, and UI changes MUST be delegated to the appropriate agent. Do NOT do these directly.
+
+- Git (init, commit, push, PR) → delegate to `general`
+- README, guides, docs → delegate to `document-writer`
+- .tsx, .css, styling → delegate to `frontend-ui-ux-engineer`
+
 ## Project Overview
 
 A Python application that fetches weather forecasts and air quality data, then sends personalized daily notifications via KakaoTalk with smart clothing recommendations based on temperature and gender.
@@ -85,9 +93,43 @@ Kakao OAuth tokens are stored in `kakao_tokens.json` (not committed to repo). Fi
 2. Run `python auth_helper.py` and paste the code
 3. Tokens will be saved and auto-refreshed on subsequent runs
 
+## Agent Delegation Rules
+
+### Mandatory Delegation (Sisyphus must NOT do directly)
+
+| Task Type | Delegate To | Trigger |
+|-----------|-------------|---------|
+| Git operations (init, commit, push, PR) | `general` | 3+ git commands needed |
+| Frontend UI/Styling | `frontend-ui-ux-engineer` | .tsx, .css, style changes |
+| Documentation | `document-writer` | README, guides, docs |
+| External library research | `librarian` | Unfamiliar packages |
+| Codebase exploration | `explore` | 2+ modules involved |
+
+### Delegation Prompt Structure (Required)
+
+When delegating, include ALL 7 sections:
+
+```
+1. TASK: Atomic, specific goal
+2. EXPECTED OUTCOME: Concrete deliverables
+3. REQUIRED SKILLS: Which skill to invoke
+4. REQUIRED TOOLS: Explicit tool whitelist
+5. MUST DO: Exhaustive requirements
+6. MUST NOT DO: Forbidden actions
+7. CONTEXT: File paths, patterns, constraints
+```
+
+### After Delegation
+
+Always verify results:
+- Does it work as expected?
+- Follows existing codebase patterns?
+- Agent followed MUST DO / MUST NOT DO?
+
 ## Future Enhancements
 
 - [ ] Chatbot mode with location sharing
 - [ ] Multiple location support (home/office)
 - [ ] Character images for outfit visualization
 - [ ] Time-based location switching (morning: home, afternoon: office)
+- [ ] Ultra-short-term precipitation alerts (radar-based)
